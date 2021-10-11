@@ -79,5 +79,31 @@ namespace ToDoIt.Tests
 
             Assert.Null(personActual);
         }
+        
+        [Fact]
+        private void RemovePersonTest()
+        {
+            People people = new People();
+            // We clear as to make sure other tests did not impact the static variable Persons
+            people.Clear();
+            
+            Person[] refPersons = new Person[5];
+
+            for (int i = 0; i < refPersons.Length; i++)
+            {
+                refPersons[i] = people.CreatePerson("Test", "Man");
+            }
+
+            people.RemovePerson(refPersons[2]);
+            
+            Person[] personsAfterRemove = people.FindAll();
+
+            foreach (Person person in personsAfterRemove)
+            {
+                Assert.Contains(person, refPersons);
+            }
+
+            Assert.DoesNotContain(refPersons[2], personsAfterRemove);
+        }
     }
 }
