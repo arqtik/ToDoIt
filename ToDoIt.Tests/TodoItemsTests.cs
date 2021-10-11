@@ -79,5 +79,30 @@ namespace ToDoIt.Tests
 
             Assert.Null(todoActual);
         }
+
+        [Fact]
+        private void FindByDoneStatusTest()
+        {
+            TodoItems todoItems = new TodoItems();
+            // We clear as to make sure other tests did not impact the static variable Persons
+            todoItems.Clear();
+            
+            Todo[] expectedTodos = new Todo[5];
+
+            for (int i = 0; i < expectedTodos.Length; i++)
+            {
+                expectedTodos[i] = todoItems.CreateTodo("Test");
+            }
+            
+            expectedTodos[^1].Done = true;
+            expectedTodos[^2].Done = true;
+
+            Todo[] doneTodos = todoItems.FindByDoneStatus(true);
+            Assert.Equal(2, doneTodos.Length);
+            Assert.True(doneTodos[0].Done);
+            Assert.True(doneTodos[1].Done);
+        }
+        
+        
     }
 }
