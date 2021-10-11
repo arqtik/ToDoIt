@@ -1,4 +1,5 @@
-﻿using ToDoIt.Data;
+﻿using System.Linq;
+using ToDoIt.Data;
 using ToDoIt.Model;
 using Xunit;
 
@@ -178,6 +179,32 @@ namespace ToDoIt.Tests
             {
                 Assert.Null(todo.Assignee);
             }
+        }
+        
+        [Fact]
+        private void RemoveTodoTest()
+        {
+            TodoItems todoItems = new TodoItems();
+            // We clear as to make sure other tests did not impact the static variable Persons
+            todoItems.Clear();
+            
+            Todo[] refTodos = new Todo[5];
+
+            for (int i = 0; i < refTodos.Length; i++)
+            {
+                refTodos[i] = todoItems.CreateTodo("Test");
+            }
+
+            todoItems.RemoveTodo(refTodos[2]);
+            
+            Todo[] todosAfterRemove = todoItems.FindAll();
+
+            foreach (Todo todo in todosAfterRemove)
+            {
+                Assert.Contains(todo, refTodos);
+            }
+
+            Assert.DoesNotContain(refTodos[2], todosAfterRemove);
         }
     }
 }
