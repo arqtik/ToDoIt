@@ -105,5 +105,14 @@ namespace ToDoIt.Data
         {
             return Todos.Where(todo => todo.Assignee == null).ToArray();
         }
+
+        /// <summary>
+        /// Removes a to-do from the array
+        /// </summary>
+        /// <param name="todoToRemove">The to-do to remove from the array of Todos</param>
+        public void RemoveTodo(Todo todoToRemove)
+        {
+            Todos = Todos.Where(todo => !todo.Equals(todoToRemove)).ToArray();
+        }
     }
 }
