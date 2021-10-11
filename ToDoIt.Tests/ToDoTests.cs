@@ -9,7 +9,7 @@ namespace ToDoIt.Tests
         private void ToDoTest()
         {
             Person person = new Person("Billy", "Johnson", 42);
-            ToDo toDo = new ToDo(1, "Test Desc")
+            Todo toDo = new Todo(1, "Test Desc")
             {
                 Assignee = person,
                 Done = true

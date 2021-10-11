@@ -1,6 +1,6 @@
 ﻿namespace ToDoIt.Model
 {
-    public class ToDo
+    public class Todo
     {
         private readonly int todoId;
         private string description;
@@ -15,7 +15,7 @@
         /// </summary>
         public Person Assignee { get; set; }
 
-        public ToDo(int todoId, string description)
+        public Todo(int todoId, string description)
         {
             this.todoId = todoId;
             this.description = description;
