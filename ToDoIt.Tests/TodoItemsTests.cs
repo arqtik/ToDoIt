@@ -102,7 +102,82 @@ namespace ToDoIt.Tests
             Assert.True(doneTodos[0].Done);
             Assert.True(doneTodos[1].Done);
         }
-        
-        
+
+        [Fact]
+        private void FindByAssigneeIdTest()
+        {
+            TodoItems todoItems = new TodoItems();
+            // We clear as to make sure other tests did not impact the static variable Persons
+            todoItems.Clear();
+            
+            Todo[] expectedTodos = new Todo[5];
+
+            for (int i = 0; i < expectedTodos.Length; i++)
+            {
+                expectedTodos[i] = todoItems.CreateTodo("Test");
+            }
+
+            Person p = new Person("Billy", "Rec", 42);
+            
+            expectedTodos[^1].Assignee = p;
+            expectedTodos[^2].Assignee = p;
+
+            Todo[] foundTodos = todoItems.FindByAssignee(p.PersonId);
+            Assert.Equal(2, foundTodos.Length);
+            Assert.Equal(foundTodos[0].Assignee.PersonId, p.PersonId);
+            Assert.Equal(foundTodos[1].Assignee.PersonId, p.PersonId);
+        }
+
+        [Fact]
+        private void FindByAssigneePersonTest()
+        {
+            TodoItems todoItems = new TodoItems();
+            // We clear as to make sure other tests did not impact the static variable Persons
+            todoItems.Clear();
+            
+            Todo[] expectedTodos = new Todo[5];
+
+            for (int i = 0; i < expectedTodos.Length; i++)
+            {
+                expectedTodos[i] = todoItems.CreateTodo("Test");
+            }
+
+            Person p = new Person("Billy", "Rec", 42);
+            
+            expectedTodos[^1].Assignee = p;
+            expectedTodos[^2].Assignee = p;
+
+            Todo[] foundTodos = todoItems.FindByAssignee(p);
+            Assert.Equal(2, foundTodos.Length);
+            Assert.Equal(foundTodos[0].Assignee, p);
+            Assert.Equal(foundTodos[1].Assignee, p);
+        }
+
+        [Fact]
+        private void FindUnassignedTodoItems()
+        {
+            TodoItems todoItems = new TodoItems();
+            // We clear as to make sure other tests did not impact the static variable Persons
+            todoItems.Clear();
+            
+            Todo[] expectedTodos = new Todo[5];
+
+            for (int i = 0; i < expectedTodos.Length; i++)
+            {
+                expectedTodos[i] = todoItems.CreateTodo("Test");
+            }
+
+            Person p = new Person("Billy", "Rec", 42);
+            
+            expectedTodos[^1].Assignee = p;
+            expectedTodos[^2].Assignee = p;
+
+            Todo[] foundTodos = todoItems.FindUnassignedTodoItems();
+            Assert.Equal(3, foundTodos.Length);
+            foreach (Todo todo in foundTodos)
+            {
+                Assert.Null(todo.Assignee);
+            }
+        }
     }
 }
