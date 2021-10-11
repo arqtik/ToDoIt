@@ -1,5 +1,4 @@
-﻿using System;
-using ToDoIt.Data;
+﻿using ToDoIt.Data;
 using ToDoIt.Model;
 using Xunit;
 
@@ -29,15 +28,11 @@ namespace ToDoIt.Tests
             // We clear as to make sure other tests did not impact the static variable Persons
             people.Clear();
             
-            Assert.Equal(0, people.Size());
+            Person expectedPerson = people.CreatePerson("Henry", "George");
+            Person actualPerson = people.FindAll()[people.Size() - 1];
             
-            people.CreatePerson("Henry", "George");
             Assert.Equal(1, people.Size());
-
-            string nameOfLastPersonInArray = people.FindAll()[people.Size() - 1].FirstName;
-            
-            Assert.Equal("Henry", nameOfLastPersonInArray);
-            
+            Assert.Equal(expectedPerson, actualPerson);
         }
 
         [Fact]
