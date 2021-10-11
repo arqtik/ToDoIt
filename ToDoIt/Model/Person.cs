@@ -4,7 +4,6 @@ namespace ToDoIt.Model
 {
     public class Person
     {
-        private readonly int personId;
         private string firstName;
         private string lastName;
 
@@ -43,6 +42,8 @@ namespace ToDoIt.Model
                 lastName = value;
             }
         }
+        
+        public int PersonId { get; }
 
         /// <summary>
         /// Create a new instance of person
@@ -54,7 +55,7 @@ namespace ToDoIt.Model
         {
             FirstName = firstName;
             LastName = lastName;
-            this.personId = personId;
+            PersonId = personId;
         }
     }
 }
