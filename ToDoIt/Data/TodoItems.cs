@@ -66,5 +66,44 @@ namespace ToDoIt.Data
         {
             Array.Resize(ref Todos, 0);
         }
+
+        /// <summary>
+        /// Get all todos based on doneStatus parameter
+        /// </summary>
+        /// <param name="doneStatus">Find todos with this status</param>
+        /// <returns>Returns an array of all Todos that match the status</returns>
+        public Todo[] FindByDoneStatus(bool doneStatus)
+        {
+            return Todos.Where(todo => todo.Done == doneStatus).ToArray();
+        }
+
+        /// <summary>
+        /// Get all todos based on the personId of the assignee
+        /// </summary>
+        /// <param name="personId">PersonId of the assignee</param>
+        /// <returns>Returns an array of all the Todos that match the personId of the assignee</returns>
+        public Todo[] FindByAssignee(int personId)
+        {
+            return Todos.Where(todo => todo.Assignee.PersonId == personId).ToArray();
+        }
+
+        /// <summary>
+        /// Get all todos based on the assignee person instance
+        /// </summary>
+        /// <param name="assignee">The assignee of the todos</param>
+        /// <returns>Returns an array of all the Todos that match the assignee</returns>
+        public Todo[] FindByAssignee(Person assignee)
+        {
+            return Todos.Where(todo => todo.Assignee.Equals(assignee)).ToArray();
+        }
+
+        /// <summary>
+        /// Get all todos that don't have an assignee set
+        /// </summary>
+        /// <returns>Returns an array of all the Todos without an assignee</returns>
+        public Todo[] FindUnassignedTodoItems()
+        {
+            return Todos.Where(todo => todo.Assignee.Equals(null)).ToArray();
+        }
     }
 }
