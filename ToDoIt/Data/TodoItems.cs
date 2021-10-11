@@ -84,7 +84,7 @@ namespace ToDoIt.Data
         /// <returns>Returns an array of all the Todos that match the personId of the assignee</returns>
         public Todo[] FindByAssignee(int personId)
         {
-            return Todos.Where(todo => todo.Assignee.PersonId == personId).ToArray();
+            return Todos.Where(todo => todo.Assignee?.PersonId == personId).ToArray();
         }
 
         /// <summary>
@@ -94,7 +94,7 @@ namespace ToDoIt.Data
         /// <returns>Returns an array of all the Todos that match the assignee</returns>
         public Todo[] FindByAssignee(Person assignee)
         {
-            return Todos.Where(todo => todo.Assignee.Equals(assignee)).ToArray();
+            return Todos.Where(todo => todo.Assignee != null && todo.Assignee.Equals(assignee)).ToArray();
         }
 
         /// <summary>
@@ -103,7 +103,7 @@ namespace ToDoIt.Data
         /// <returns>Returns an array of all the Todos without an assignee</returns>
         public Todo[] FindUnassignedTodoItems()
         {
-            return Todos.Where(todo => todo.Assignee.Equals(null)).ToArray();
+            return Todos.Where(todo => todo.Assignee == null).ToArray();
         }
     }
 }
