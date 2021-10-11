@@ -68,5 +68,14 @@ namespace ToDoIt.Data
         {
             Array.Resize(ref Persons, 0);
         }
+        
+        /// <summary>
+        /// Remove a person from the array of persons
+        /// </summary>
+        /// <param name="personToRemove">The person that should be remove from the array</param>
+        public void RemovePerson(Person personToRemove)
+        {
+            Persons = Persons.Where(todo => !todo.Equals(personToRemove)).ToArray();
+        }
     }
 }
