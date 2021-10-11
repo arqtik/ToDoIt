@@ -12,7 +12,7 @@ namespace ToDoIt.Tests
         {
             TodoItems todoItems = new TodoItems();
 
-            // We clear as to make sure other tests did not impact the static variable Persons
+            // We clear as to make sure other tests did not impact the static variable Todos
             todoItems.Clear();
             Assert.Equal(0, todoItems.Size());
 
@@ -26,7 +26,7 @@ namespace ToDoIt.Tests
         {
             TodoItems todoItems = new TodoItems();
             
-            // We clear as to make sure other tests did not impact the static variable Persons
+            // We clear as to make sure other tests did not impact the static variable Todos
             todoItems.Clear();
             
             Todo expectedTodo = todoItems.CreateTodo("Test Description");
@@ -41,7 +41,7 @@ namespace ToDoIt.Tests
         {
             TodoItems todoItems = new TodoItems();
             
-            // We clear as to make sure other tests did not impact the static variable Persons
+            // We clear as to make sure other tests did not impact the static variable Todos
             todoItems.Clear();
 
             Todo[] todosExpected = new Todo[2];
@@ -74,7 +74,7 @@ namespace ToDoIt.Tests
         {
             TodoItems todoItems = new TodoItems();
             
-            // We clear as to make sure other tests did not impact the static variable Persons
+            // We clear as to make sure other tests did not impact the static variable Todos
             todoItems.Clear();
             Todo todoActual = todoItems.FindById(9999);
 
@@ -85,7 +85,7 @@ namespace ToDoIt.Tests
         private void FindByDoneStatusTest()
         {
             TodoItems todoItems = new TodoItems();
-            // We clear as to make sure other tests did not impact the static variable Persons
+            // We clear as to make sure other tests did not impact the static variable Todos
             todoItems.Clear();
             
             Todo[] refTodos = new Todo[5];
@@ -108,7 +108,7 @@ namespace ToDoIt.Tests
         private void FindByAssigneeIdTest()
         {
             TodoItems todoItems = new TodoItems();
-            // We clear as to make sure other tests did not impact the static variable Persons
+            // We clear as to make sure other tests did not impact the static variable Todos
             todoItems.Clear();
             
             Todo[] refTodos = new Todo[5];
@@ -133,7 +133,7 @@ namespace ToDoIt.Tests
         private void FindByAssigneePersonTest()
         {
             TodoItems todoItems = new TodoItems();
-            // We clear as to make sure other tests did not impact the static variable Persons
+            // We clear as to make sure other tests did not impact the static variable Todos
             todoItems.Clear();
             
             Todo[] refTodos = new Todo[5];
@@ -158,7 +158,7 @@ namespace ToDoIt.Tests
         private void FindUnassignedTodoItems()
         {
             TodoItems todoItems = new TodoItems();
-            // We clear as to make sure other tests did not impact the static variable Persons
+            // We clear as to make sure other tests did not impact the static variable Todos
             todoItems.Clear();
             
             Todo[] refTodos = new Todo[5];
@@ -185,7 +185,7 @@ namespace ToDoIt.Tests
         private void RemoveTodoTest()
         {
             TodoItems todoItems = new TodoItems();
-            // We clear as to make sure other tests did not impact the static variable Persons
+            // We clear as to make sure other tests did not impact the static variable Todos
             todoItems.Clear();
             
             Todo[] refTodos = new Todo[5];
