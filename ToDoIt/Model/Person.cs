@@ -15,7 +15,7 @@ namespace ToDoIt.Model
         public string FirstName
         {
             get => firstName;
-            private set
+            set
             {
                 if (value == null || value.Equals(String.Empty))
                 {
@@ -33,7 +33,7 @@ namespace ToDoIt.Model
         public string LastName
         {
             get => lastName;
-            private set
+            set
             {
                 if (value == null || value.Equals(String.Empty))
                 {
