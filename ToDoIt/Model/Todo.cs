@@ -2,8 +2,12 @@
 {
     public class Todo
     {
-        private readonly int todoId;
         private string description;
+        
+        /// <summary>
+        /// The ID of this to-do instance
+        /// </summary>
+        public int TodoId { get; }
 
         /// <summary>
         /// If the To-Do is done or not
@@ -17,7 +21,7 @@
 
         public Todo(int todoId, string description)
         {
-            this.todoId = todoId;
+            TodoId = todoId;
             this.description = description;
         }
     }
