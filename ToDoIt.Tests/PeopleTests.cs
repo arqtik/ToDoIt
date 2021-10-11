@@ -78,9 +78,9 @@ namespace ToDoIt.Tests
         {
             People people = new People();
             
-            // Clear to make sure it's empty from other tests
+            // We clear as to make sure other tests did not impact the static variable Persons
             people.Clear();
-            Person personActual = people.FindById(45643);
+            Person personActual = people.FindById(9999);
 
             Assert.Null(personActual);
         }
